@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715201527) do
+ActiveRecord::Schema.define(version: 20150715233004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actions", force: :cascade do |t|
+  create_table "days", force: :cascade do |t|
+    t.integer "feat_id"
+    t.integer "obstacle_id"
+    t.integer "user_id"
+    t.date    "date"
+  end
+
+  add_index "days", ["feat_id"], name: "index_days_on_feat_id", using: :btree
+  add_index "days", ["obstacle_id"], name: "index_days_on_obstacle_id", using: :btree
+  add_index "days", ["user_id"], name: "index_days_on_user_id", using: :btree
+
+  create_table "feats", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.integer  "bliss_pts"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "days", force: :cascade do |t|
-    t.integer "action_id"
-    t.integer "obstacle_id"
-    t.integer "user_id"
-    t.date    "date"
-  end
-
-  add_index "days", ["action_id"], name: "index_days_on_action_id", using: :btree
-  add_index "days", ["obstacle_id"], name: "index_days_on_obstacle_id", using: :btree
-  add_index "days", ["user_id"], name: "index_days_on_user_id", using: :btree
 
   create_table "obstacles", force: :cascade do |t|
     t.string   "name"

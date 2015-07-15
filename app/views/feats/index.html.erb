@@ -1,5 +1,5 @@
 <div class="row">
-<h1>Actions</h1> <hr>
+<h1>Feats</h1> <hr>
   <div class="column">
     <table class="table table-striped table-hover ">
       <thead>
@@ -10,11 +10,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @actions.each do |action| %>
-            <tr data-link="<%= action_path(action) %>">
-                <td> <%= action.name %></td>
-                <td> <%= action.description %></td>
-                <td> <%= action.bliss_pts %></td>
+        <% @feats.each do |feat| %>
+            <tr data-link="<%= feat_path(feat) %>">
+                <td> <%= feat.name %></td>
+                <td> <%= feat.description %></td>
+                <td> <%= feat.bliss_pts %></td>
             </tr>
         <% end %>
       </tbody>

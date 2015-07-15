@@ -1,6 +1,6 @@
-<%= render 'layouts/errors', object: @action %>
+<%= render 'layouts/errors', object: @feat %>
 
-<%= bootstrap_form_for(@action) do |f| %>
+<%= bootstrap_form_for(@feat) do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :description %>
   <%= f.text_field :bliss_pts, label: "Points" %>

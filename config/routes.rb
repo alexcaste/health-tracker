@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: ["show", "index"]
   resources :home, :only => [:index]
 
-  resources :actions
+  resources :feats
   resources :obstacles
   resources :days
 end
