@@ -1,0 +1,12 @@
+<%= render 'layouts/errors', object: @day %>
+
+<%= bootstrap_form_for(@day) do |f| %>
+  <%= f.date_select :date %>
+  <!-- <% @actions.each do |action| %>
+    <%= f.select %>
+  <% end %>
+  <% @obstacles.each do |obstacle| %>
+    <%= f.select :obstacle,  %>
+  <% end %> -->
+  <%= f.submit data: {disable_with: "Saving..."}, class: "btn btn-success btn-block" %>
+<% end %>

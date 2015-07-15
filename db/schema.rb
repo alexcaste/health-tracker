@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150715201527) do
   create_table "obstacles", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "bliss_pts"
+    t.integer  "misery_pts"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

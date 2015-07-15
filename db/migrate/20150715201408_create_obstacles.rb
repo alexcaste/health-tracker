@@ -3,7 +3,7 @@ class CreateObstacles < ActiveRecord::Migration
     create_table :obstacles do |t|
       t.string :name
       t.string :description
-      t.integer :bliss_pts
+      t.integer :misery_pts
 
       t.timestamps
     end

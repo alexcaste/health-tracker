@@ -1,0 +1,9 @@
+<%= render 'layouts/errors', object: @action %>
+
+<%= bootstrap_form_for(@action) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.text_field :bliss_pts, label: "Points" %>
+
+  <%= f.submit data: {disable_with: "Saving..."}, class: "btn btn-success btn-block" %>
+<% end %>
