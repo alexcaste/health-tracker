@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', object: @obstacle %>
 
-<%= bootstrap_form_for(@obstacle) do |f| %>
+<%= bootstrap_form_for @obstacle, remote: true do |f| %>
   <%= f.text_field :name, placeholder: "Ex: Bad Traffic" %>
   <%= f.text_area :description, rows: 4, placeholder: "Describe the event that created misery within you." %>
   <%= f.number_field :misery_pts, label: "Misery Level", placeholder: "From 1 (lowest) to 10 (highest)" %>

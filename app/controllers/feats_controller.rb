@@ -15,12 +15,14 @@ class FeatsController < ApplicationController
   end
 
   def create
+    @feats = Feat.all
     @feat = Feat.new(feat_params)
     if @feat.save
-      flash[:notice] = "Added"
-      redirect_to feat_path(@feat)
-    else
-      render :new
+      respond_to do |format|
+        flash[:notice] = "Added"
+        format.html { redirect_to feats_path }
+        format.js
+      end
     end
   end
 
@@ -41,7 +43,7 @@ class FeatsController < ApplicationController
   def destroy
     @feat = Feat.find(params[:id])
     @feat.destroy
-    redirect_to actions_path
+    redirect_to feats_path
   end
 
   private

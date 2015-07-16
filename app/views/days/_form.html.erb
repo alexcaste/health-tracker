@@ -2,11 +2,22 @@
 
 <%= bootstrap_form_for(@day) do |f| %>
   <%= f.date_select :date %>
-  <!-- <% @actions.each do |action| %>
-    <%= f.select %>
-  <% end %>
-  <% @obstacles.each do |obstacle| %>
-    <%= f.select :obstacle,  %>
-  <% end %> -->
-  <%= f.submit data: {disable_with: "Saving..."}, class: "btn btn-success btn-block" %>
+  <%= f.label "Choose which to add:" %>
+  <div class="day">
+    <%= f.form_group :feat do %>
+      <%= f.radio_button :feat, 'feat', label: "Feat", inline: true  %>
+      <%= f.radio_button :feat, 'obstacle', label: "Obstacle", inline: true  %>
+    <% end %>
+  </div>
+  <div class="feat chooser">
+    <%= f.label :feat_id, "Feats:" %>
+    <%= select_tag :feat_id, options_for_select(@feat_selects), include_blank: true ,  class: " form-control"  %>
+  </div>
+  <div class="ob chooser">
+    <%= f.label :obstacle_id, "Obstacles:" %>
+    <%= select_tag :obstacle_id, options_for_select(@ob_selects), include_blank: true ,  class: "form-control"  %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <br>
+  <%= f.submit "Track", data: {disable_with: "Saving..."}, class: "btn btn-success btn-block" %>
 <% end %>

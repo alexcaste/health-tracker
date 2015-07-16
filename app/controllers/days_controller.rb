@@ -6,14 +6,20 @@ class DaysController < ApplicationController
   def show
     @day = Day.find(params[:id])
 
+
   end
 
   def new
     @day = Day.new
+    @feat_selects = Feat.feat_selects
+    @ob_selects = Obstacle.ob_selects
+
   end
 
   def create
     @day = Day.new(day_params)
+    @day.feat_id = params[:feat_id]
+    @day.obstacle_id = params[:obstacle_id]
     if @day.save
       flash[:notice] = "Added"
       redirect_to day_path(@day)
@@ -45,6 +51,6 @@ class DaysController < ApplicationController
   private
 
   def day_params
-    params.require(:day).permit(:date, :user_id, :feat_id, :obstacle_id)
+    params.require(:day).permit(:date, :user_id)
   end
 end

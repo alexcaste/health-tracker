@@ -1,9 +1,6 @@
-<h1 class="page-header text-center">
+<h1 class="page-header text-center row">
   Profile for <strong><%= @user.first_name %> <%= @user.last_name %></strong>
     <br>
-    <% if @user.admin %>
-      <span class="btn btn-primary btn-xs disabled">ADMIN</span>
-    <% end %>
 </h1>
 
 <div class="row">
@@ -11,11 +8,16 @@
 
 <% if current_user != nil %>
   <p class="lead">
-    <%= @user.gender %> <br>
+    <%= @user.gender %>
+    <span class="pull-right">
+      <% if @user.admin %>
+        <span class="btn btn-primary btn-xs disabled">ADMIN</span>
+      <% end %>
+    </span>
+    <hr>
     <strong>Age: </strong><%= @user.age %>  <br>
-    <strong>Weight:</strong> <%= @user.weight %> lbs. <hr>
+    <strong>Weight:</strong> <%= @user.weight %> lbs. <br>
     <strong>Email:</strong> <%= @user.email %><br>
-    <strong></strong>
   </p>
   <% else %>
     <div style="margin-top: 60px" class="col-md-3 col-md-offset-2 text-center">
@@ -24,7 +26,16 @@
     </div>
   <% end %>
 </div>
+  <div class="row">
+    <p class="lead">Tracked</p>
+      <% @obs =  Day.where(user_id: current_user) %>
+      
+      <% @obs.each do |o| %>
+        <%= @obs %>
+      <% end %>
+      <br>
+  </div>
 
 <% if can? :manage, @user %>
-<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-block btn-default", id: 'edit-user'%>
+  <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-block btn-default", id: 'edit-user'%>
 <% end %>

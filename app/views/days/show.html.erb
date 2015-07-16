@@ -1,0 +1,17 @@
+<h1>Show</h1>
+
+<h3><%= @day.date %></h3>
+<%= @day.user.email %>
+<%= @day.points %>
+<% if @day.feat_id != nil %>
+<p>
+  Feat:
+  <%= @day.feat_id %><br>
+  <%= @day.feat.name %><br>
+  <%= @day.feat.description %><br>
+  <%= @day.feat.bliss_pts %><br>
+</p>
+<% else %>
+  Obstacle:
+  <%= @day.obstacle_id %>
+<% end %>

@@ -13,5 +13,12 @@ class Feat < ActiveRecord::Base
     end
   end
 
+  def self.feat_selects
+    select_array = []
+    Feat.all.each do |feat|
+      select_array.push([feat.name, feat.id])
+    end
+    return select_array
+  end
 
 end

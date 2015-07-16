@@ -21,9 +21,21 @@
 $(".alert").alert();
 window.setTimeout(function() { $(".alert").alert().fadeOut("slow"); }, 2500);
 
-jQuery(function($) {
+jQuery(function() {
   $("tr[data-link]").click(function() {
     window.location = this.dataset.link
-
+  });
+  $(".day").show();
+  $(".feat").hide();
+  $(".ob").hide();
+  $('input[type="radio"]').click(function() {
+    if($(this).attr("value")=="feat"){
+      $(".chooser").not(".feat").hide();
+      $(".feat").show();
+    }
+    if($(this).attr("value")=="obstacle"){
+      $(".chooser").not(".ob").hide();
+      $(".ob").show();
+    }
   });
 })

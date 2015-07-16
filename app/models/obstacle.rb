@@ -13,4 +13,12 @@ class Obstacle < ActiveRecord::Base
     end
   end
 
+  def self.ob_selects
+    select_array = []
+    Obstacle.all.each do |obstacle|
+      select_array.push([obstacle.name, obstacle.id])
+    end
+    return select_array
+  end
+
 end

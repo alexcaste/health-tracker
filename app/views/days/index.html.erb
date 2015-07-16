@@ -1,6 +1,12 @@
 <h1>Days</h1>
   <% @days.each do |day| %>
-    <%= day.name %>
-    <%= day.description %>
-    <%= day.bliss_pts %>
+  <div id="row">
+  <%= day.user.email %>
+    date: <%= day.date %>
+    feat name: <%= day.feat.name %>
+    feat desc: <%= day.feat.description %>
+    feat points: <%= day.feat.bliss_pts %>
+    day points: <%= day.points %>
+
+  </div>
   <% end %>
