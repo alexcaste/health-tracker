@@ -18,6 +18,7 @@ source 'https://rubygems.org'
   gem 'textacular'
   gem 'will_paginate'
   gem 'enum_accessor'
+  gem 'jquery-turbolinks'
 
 
 group :development do

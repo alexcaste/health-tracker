@@ -45,6 +45,6 @@ class DaysController < ApplicationController
   private
 
   def day_params
-    params.require(:day).permit(:date, :user_id, :action_id, :obstacle_id)
+    params.require(:day).permit(:date, :user_id, :feat_id, :obstacle_id)
   end
 end

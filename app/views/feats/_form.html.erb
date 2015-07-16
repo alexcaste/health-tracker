@@ -1,9 +1,9 @@
 <%= render 'layouts/errors', object: @feat %>
 
 <%= bootstrap_form_for(@feat) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :description %>
-  <%= f.text_field :bliss_pts, label: "Points" %>
-
-  <%= f.submit data: {disable_with: "Saving..."}, class: "btn btn-success btn-block" %>
+  <%= f.text_field :name, placeholder: "Ex: Power Yoga" %>
+  <%= f.text_area :description, rows: 4, placeholder: "Describe the action you have taken to create bliss in your life." %>
+  <%= f.number_field :bliss_pts, label: "Bliss Level", placeholder: "From 1 (lowest) to 10 (highest)" %>
+  <%= f.hidden_field :creator_id, value: current_user.id %>
+  <%= f.submit data: {disable_with: "There are no wrong actions in life"}, class: "btn btn-success btn-block" %>
 <% end %>

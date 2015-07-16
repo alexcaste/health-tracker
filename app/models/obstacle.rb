@@ -4,4 +4,13 @@ class Obstacle < ActiveRecord::Base
   # has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "missing.jpg"
   # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def self.creator_check (current_user)
+
+    Obstacle.all.each do |obstacle|
+      if obstacle.creator_id == current_user
+        return true
+      end
+    end
+  end
+
 end

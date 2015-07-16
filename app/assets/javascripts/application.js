@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
@@ -22,6 +23,7 @@ window.setTimeout(function() { $(".alert").alert().fadeOut("slow"); }, 2500);
 
 jQuery(function($) {
   $("tr[data-link]").click(function() {
-      window.location = this.dataset.link
-    });
-  })
+    window.location = this.dataset.link
+
+  });
+})

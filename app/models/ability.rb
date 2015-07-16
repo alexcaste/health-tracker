@@ -3,8 +3,8 @@ class Ability
 
   def initialize(user)
 
-    alias_action :update, :read, :to => :ru
-    alias_action :update, :destroy, :read, :to => :rud
+    alias_action :read, :create, :to => :cr
+    alias_action :update, :destroy, :read, :create, :to => :crud
     user ||= User.new()
 
     if user.admin
@@ -12,8 +12,11 @@ class Ability
 
     elsif user.id != nil
       can :manage, user
-
-      can :read, :all
+      can :update, Feat, :creator_id => user.id
+      can :update, Obstacle, :creator_id => user.id
+      can :crud, Day, :user_id => user.id
+      can :cr, Feat
+      can :cr, Obstacle
 
     else
       can :read, :all
@@ -31,7 +34,7 @@ class Ability
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
+    # here are :read, :create, :update and :destroupdatupdate.
     #
     # The second argument is the resource the user can perform the action on.
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby

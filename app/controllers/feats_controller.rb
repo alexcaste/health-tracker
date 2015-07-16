@@ -46,6 +46,6 @@ class FeatsController < ApplicationController
 
   private
   def feat_params
-    params.require(:feat).permit(:name, :description, :bliss_pts)
+    params.require(:feat).permit(:name, :description, :bliss_pts, :creator_id)
   end
 end

@@ -35,6 +35,7 @@ class ObstaclesController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
     @obstacle = Obstacle.find(params[:id])
   end
 
@@ -46,6 +47,6 @@ class ObstaclesController < ApplicationController
 
   private
   def obstacle_params
-    params.require(:obstacle).permit(:name, :description, :misery_pts)
+    params.require(:obstacle).permit(:name, :description, :misery_pts, :creator_id)
   end
 end

@@ -6,7 +6,13 @@
         <tr>
           <th>Name </th>
           <th>Description</th>
-          <th>Points</th>
+          <th class="text-center">Level</th>
+          <% if Feat.creator_check(current_user.id) %>
+            <th class="text-center">Edit</th>
+              <% if can? :destroy, @feats %>
+                <th class="text-center">Delete</th>
+              <% end %>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -14,7 +20,21 @@
             <tr data-link="<%= feat_path(feat) %>">
                 <td> <%= feat.name %></td>
                 <td> <%= feat.description %></td>
-                <td> <%= feat.bliss_pts %></td>
+                <td class="text-center"> <%= feat.bliss_pts %></td>
+                <td class="text-center">
+                  <% if can? :update, feat %>
+                    <%= link_to edit_feat_path(feat), class: "btn btn-xs btn-info" do %>
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% if can? :destroy, feat %>
+                    <%= link_to feat_path(feat), class: "btn btn-xs btn-danger", :data => {:confirm => "Are you Sure?", :method => "delete"} do %>
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
             </tr>
         <% end %>
       </tbody>
