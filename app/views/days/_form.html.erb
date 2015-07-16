@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', object: @day %>
 
-<%= bootstrap_form_for(@day) do |f| %>
+<%= bootstrap_form_for @day, remote: true do |f| %>
   <%= f.date_select :date %>
   <%= f.label "Choose which to add:" %>
   <div class="day">

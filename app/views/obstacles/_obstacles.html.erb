@@ -1,0 +1,41 @@
+  <div class="column">
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>Name </th>
+          <th>Description</th>
+          <th class="text-center">Level</th>
+          <% if Obstacle.creator_check(current_user.id) %>
+            <th class="text-center">Edit</th>
+            <% if can? :destroy, @obstacles %>
+              <th class="text-center">Delete</th>
+            <% end %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @obstacles.each do |obstacle| %>
+            <tr data-link="<%= obstacle_path(obstacle) %>">
+                <td> <%= obstacle.name %></td>
+                <td> <%= obstacle.description %></td>
+                <td class="text-center"> <%= obstacle.misery_pts %></td>
+                <td class="text-center">
+                  <% if can? :update, obstacle %>
+                    <%= link_to edit_obstacle_path(obstacle), class: "btn btn-xs btn-info" do %>
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% if can? :destroy, obstacle %>
+                    <%= link_to obstacle_path(obstacle), class: "btn btn-xs btn-danger", :data => {:confirm => "Are you Sure?", :method => "delete"} do %>
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
+
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

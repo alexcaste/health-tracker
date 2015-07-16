@@ -10,6 +10,7 @@ class DaysController < ApplicationController
   end
 
   def new
+    @days = Day.all
     @day = Day.new
     @feat_selects = Feat.feat_selects
     @ob_selects = Obstacle.ob_selects
@@ -17,6 +18,7 @@ class DaysController < ApplicationController
   end
 
   def create
+    @days = Day.all
     @day = Day.new(day_params)
     @day.feat_id = params[:feat_id]
     @day.obstacle_id = params[:obstacle_id]
